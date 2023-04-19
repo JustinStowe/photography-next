@@ -1,8 +1,9 @@
+"use client";
 import { useState } from "react";
 import { usePhotoStore } from "../stores/usePhotoStore";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 export function SignUpForm({ setUser }) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { userSignUp } = usePhotoStore();
   const [formData, setFormData] = useState({
     name: "",
@@ -25,7 +26,7 @@ export function SignUpForm({ setUser }) {
     try {
       const { error, confirm, ...data } = formData;
       const user = await userSignUp(data);
-      Navigate("/home/user");
+      router.push("/home/user");
     } catch (error) {
       console.log("sign-up error:", error);
       setFormData({ ...formData, error: "Sign Up Failed" });

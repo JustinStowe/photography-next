@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import { usePhotoStore } from "../stores/usePhotoStore";
@@ -8,21 +9,21 @@ export default function Header() {
       <nav className="space-x-4 flex justify-between">
         <nav className="space-x-4 flex justify-around">
           {user && (
-            <Link to="/home/user/new">
+            <Link href="/home/user/new">
               <button>Upload new Photo</button>
             </Link>
           )}
           {user ? (
-            <Link to="/home/user">
+            <Link href="/home/user">
               <button>Home</button>
             </Link>
           ) : (
-            <Link to="/home/public">
+            <Link href="/home/public">
               <button>Home</button>
             </Link>
           )}
 
-          <Link to="/account">
+          <Link href="/account">
             <button>Account</button>
           </Link>
         </nav>

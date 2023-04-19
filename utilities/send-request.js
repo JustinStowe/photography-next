@@ -1,14 +1,9 @@
-import fetch from "isomorphic-unfetch";
-
-export async function sendRequest(
-  url,
-  method = "GET",
-  data = null,
-  token = null
-) {
+import { getToken } from "./user-service";
+export async function sendRequest(url, method = "GET", data = null) {
   const headers = {
     "Content-type": "application/json",
   };
+  const token = getToken();
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
